@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Biblioteca";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <img src="~/images/Logo.webp" alt="Logo Biblioteca" style="height:80px;" />
+        <h1 class="display-4">Bienvenido a la Biblioteca</h1>
+        <p class="lead">Gestiona libros, usuarios y préstamos fácilmente.</p>
+    </div>
+
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-3">
+            <a href="/Libros" class="btn btn-primary btn-lg w-100 mb-2">
+                <i class="fa fa-book"></i> Libros
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a href="/Usuarios" class="btn btn-success btn-lg w-100 mb-2">
+                <i class="fa fa-user"></i> Usuarios
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a href="/Prestamos" class="btn btn-warning btn-lg w-100 mb-2">
+                <i class="fa fa-exchange-alt"></i> Préstamos
+            </a>
+        </div>
+    </div>
+
+    <!-- Ejemplo de resumen visual -->
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <i class="fa fa-book fa-2x text-primary"></i>
+                    <h5 class="card-title mt-2">Libros registrados</h5>
+                    <p class="card-text display-6">@ViewBag.LibrosCount</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <i class="fa fa-user fa-2x text-success"></i>
+                    <h5 class="card-title mt-2">Usuarios registrados</h5>
+                    <p class="card-text display-6">@ViewBag.UsuariosCount</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <i class="fa fa-exchange-alt fa-2x text-warning"></i>
+                    <h5 class="card-title mt-2">Préstamos activos</h5>
+                    <p class="card-text display-6">@ViewBag.PrestamosCount</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped table-bordered">
+        <!-- contenido -->
+    </table>
+</div>

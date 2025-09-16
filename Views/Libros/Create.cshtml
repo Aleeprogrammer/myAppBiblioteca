@@ -1,0 +1,38 @@
+﻿@model myApp.Models.Libro
+
+@{
+    ViewData["Title"] = "Agregar Libro";
+}
+
+<h1 class="mb-3">➕ Agregar Libro</h1>
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group mb-2">
+        <label asp-for="Titulo" class="control-label"></label>
+        <input asp-for="Titulo" class="form-control" />
+        <span asp-validation-for="Titulo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-2">
+        <label asp-for="Autor" class="control-label"></label>
+        <input asp-for="Autor" class="form-control" />
+        <span asp-validation-for="Autor" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-2">
+        <label asp-for="AñoPublicacion" class="control-label"></label>
+        <input asp-for="AñoPublicacion" class="form-control" />
+        <span asp-validation-for="AñoPublicacion" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Genero" class="control-label"></label>
+        <input asp-for="Genero" class="form-control" />
+        <span asp-validation-for="Genero" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">💾 Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

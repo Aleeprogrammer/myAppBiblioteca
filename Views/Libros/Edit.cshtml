@@ -1,0 +1,45 @@
+﻿@model myApp.Models.Libro
+
+@{
+    ViewData["Title"] = "Editar Libro";
+}
+
+<h1>Editar Libro</h1>
+
+<form asp-action="Edit" method="post">
+    @* Campo oculto para mantener el Id del libro *@
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Titulo" class="form-label"></label>
+        <input asp-for="Titulo" class="form-control" />
+        <span asp-validation-for="Titulo" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Autor" class="form-label"></label>
+        <input asp-for="Autor" class="form-control" />
+        <span asp-validation-for="Autor" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AñoPublicacion" class="form-label"></label>
+        <input asp-for="AñoPublicacion" class="form-control" />
+        <span asp-validation-for="AñoPublicacion" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Genero" class="form-label"></label>
+        <input asp-for="Genero" class="form-control" />
+        <span asp-validation-for="Genero" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">💾 Guardar Cambios</button>
+    <a asp-action="Index" class="btn btn-secondary">↩️ Volver</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

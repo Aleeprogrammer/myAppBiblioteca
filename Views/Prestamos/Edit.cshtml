@@ -1,0 +1,60 @@
+﻿@model myApp.Models.Prestamo
+
+@{
+    ViewData["Title"] = "Editar Préstamo";
+}
+
+<h1>✏️ Editar Préstamo</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group mb-3">
+        <label>Libro</label>
+        <select asp-for="Libro.Id" name="libroId" class="form-control">
+            @foreach (var libro in ViewBag.Libros)
+            {
+                if (Model.Libro?.Id == libro.Id)
+                {
+                    <option value="@libro.Id" selected>@libro.Titulo</option>
+                }
+                else
+                {
+                    <option value="@libro.Id">@libro.Titulo</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="form-group mb-3">
+        <label>Usuario</label>
+        <select asp-for="Usuario.Id" name="usuarioId" class="form-control">
+            @foreach (var usuario in ViewBag.Usuarios)
+            {
+                if (Model.Usuario?.Id == usuario.Id)
+                {
+                    <option value="@usuario.Id" selected>@usuario.Nombre</option>
+                }
+                else
+                {
+                    <option value="@usuario.Id">@usuario.Nombre</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="FechaPrestamo"></label>
+        <input asp-for="FechaPrestamo" class="form-control" />
+        <span asp-validation-for="FechaPrestamo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="FechaDevolucion"></label>
+        <input asp-for="FechaDevolucion" class="form-control" />
+        <span asp-validation-for="FechaDevolucion" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">💾 Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">↩️ Volver</a>
+</form>

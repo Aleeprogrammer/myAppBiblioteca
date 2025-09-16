@@ -1,0 +1,39 @@
+﻿@model IEnumerable<myApp.Models.Prestamo>
+
+@{
+    ViewData["Title"] = "Lista de Préstamos";
+}
+
+<h1 class="mb-3">📚 Lista de Préstamos</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">➕ Registrar Préstamo</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Libro</th>
+            <th>Usuario</th>
+            <th>Fecha de Préstamo</th>
+            <th>Fecha de Devolución</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Libro?.Titulo</td>
+                <td>@item.Usuario?.Nombre</td>
+                <td>@item.FechaPrestamo.ToShortDateString()</td>
+                <td>@item.FechaDevolucion.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">🔎 Detalles</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">✏️ Editar</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">🗑️ Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

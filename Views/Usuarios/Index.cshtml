@@ -1,0 +1,54 @@
+﻿@model IEnumerable<myApp.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Usuarios";
+    var error = TempData["Error"] as string;
+    var success = TempData["Success"] as string;
+}
+
+<h1>👤 Lista de Usuarios</h1>
+
+@* ALERTAS *@
+@if (!string.IsNullOrEmpty(error))
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @error
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    </div>
+}
+else if (!string.IsNullOrEmpty(success))
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @success
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    </div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-success">➕ Agregar Usuario</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var usuario in Model)
+        {
+            <tr>
+                <td>@usuario.Nombre</td>
+                <td>@usuario.Direccion</td>
+                <td>@usuario.Telefono</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@usuario.Id" class="btn btn-warning btn-sm">✏️ Editar</a>
+                    <a asp-action="Delete" asp-route-id="@usuario.Id" class="btn btn-danger btn-sm">🗑 Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,34 @@
+﻿@model myApp.Models.Libro
+
+@{
+    ViewData["Title"] = "Eliminar Libro";
+}
+
+<h1>Eliminar Libro</h1>
+
+<h4>¿Estás seguro que deseas eliminar este libro?</h4>
+<hr />
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Título</dt>
+        <dd class="col-sm-10">@Model.Titulo</dd>
+
+        <dt class="col-sm-2">Autor</dt>
+        <dd class="col-sm-10">@Model.Autor</dd>
+
+        <dt class="col-sm-2">Año Publicación</dt>
+        <dd class="col-sm-10">@Model.AñoPublicacion</dd>
+
+        <dt class="col-sm-2">Género</dt>
+        <dd class="col-sm-10">@Model.Genero</dd>
+    </dl>
+</div>
+
+<form asp-action="Delete" method="post">
+    @* Campo oculto para mantener el Id del libro *@
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-danger">🗑️ Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">↩️ Cancelar</a>
+</form>

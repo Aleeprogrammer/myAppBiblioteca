@@ -1,0 +1,45 @@
+﻿@model IEnumerable<myApp.Models.Libro>
+
+@{
+    ViewData["Title"] = "Lista de Libros";
+}
+
+<h1 class="mb-3">📚 Lista de Libros</h1>
+
+<p>
+    <a asp-controller="Libros" asp-action="Create" class="btn btn-primary">➕ Agregar Libro</a>
+</p>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Titulo)</th>
+            <th>@Html.DisplayNameFor(model => model.Autor)</th>
+            <th>@Html.DisplayNameFor(model => model.AñoPublicacion)</th>
+            <th>@Html.DisplayNameFor(model => model.Genero)</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Titulo</td>
+                <td>@item.Autor</td>
+                <td>@item.AñoPublicacion</td>
+                <td>@item.Genero</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">✏ Editar</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">🗑 Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

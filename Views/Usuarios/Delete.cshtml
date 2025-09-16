@@ -1,0 +1,21 @@
+﻿@model myApp.Models.Usuario
+
+@{
+    ViewData["Title"] = "Eliminar Usuario";
+}
+
+<h1>🗑 Eliminar Usuario</h1>
+
+<h3>¿Estás seguro de que deseas eliminar este usuario?</h3>
+
+<div>
+    <p><strong>Nombre:</strong> @Model.Nombre</p>
+    <p><strong>Dirección:</strong> @Model.Direccion</p>
+    <p><strong>Teléfono:</strong> @Model.Telefono</p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">❌ Confirmar</button>
+    <a asp-action="Index" class="btn btn-secondary">↩️ Cancelar</a>
+</form>

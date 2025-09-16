@@ -1,0 +1,46 @@
+﻿@model myApp.Models.Prestamo
+
+@{
+    ViewData["Title"] = "Registrar Préstamo";
+}
+
+<h1>➕ Registrar Préstamo</h1>
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false, "", new { @class = "alert alert-danger" })
+    <div class="form-group mb-3">
+        <label>Libro</label>
+        <select name="libroId" class="form-control">
+            @foreach (var libro in ViewBag.Libros)
+            {
+                <option value="@libro.Id">@libro.Titulo</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group mb-3">
+        <label>Usuario</label>
+        <select name="usuarioId" class="form-control">
+            @foreach (var usuario in ViewBag.Usuarios)
+            {
+                <option value="@usuario.Id">@usuario.Nombre</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group mb-3">
+        <label>Fecha de Préstamo</label>
+        <input asp-for="FechaPrestamo" class="form-control" type="date" />
+        @Html.ValidationMessageFor(model => model.FechaPrestamo)
+    </div>
+
+    <div class="form-group mb-3">
+        <label>Fecha de Devolución</label>
+        <input asp-for="FechaDevolucion" class="form-control" type="date" />
+        @Html.ValidationMessageFor(model => model.FechaDevolucion)
+    </div>
+
+    <button type="submit" class="btn btn-success">💾 Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">↩️ Volver</a>
+</form>
